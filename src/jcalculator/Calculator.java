@@ -5,6 +5,8 @@
  */
 package jcalculator;
 
+import java.util.Locale;
+
 /**
  *
  * @author miros
@@ -15,41 +17,47 @@ public class Calculator extends javax.swing.JFrame {
      * Creates new form Calculator
      */
     
-    double num, ans;
-    int calculation;
+    private boolean newOperation;
+    private float score = 0;
+    double first;
+    double second;
+    double result;
+    String operation;
+//    double num, ans;
+//    int calculation;
     
     public Calculator() {
         initComponents();
     }
     
-    public void result(){
-        
-        {
-            switch(calculation){
-                
-                case 1:
-                    ans = num + Double.parseDouble(jTextField1.getText());
-                    jTextField1.setText(Double.toString(ans));
-                    break;
-                    
-                case 2:
-                    ans = num - Double.parseDouble(jTextField1.getText());
-                    jTextField1.setText(Double.toString(ans));
-                    break;
-                    
-                case 3:
-                    ans = num * Double.parseDouble(jTextField1.getText());
-                    jTextField1.setText(Double.toString(ans));
-                    break;
-                    
-                case 4:
-                    ans = num / Double.parseDouble(jTextField1.getText());
-                    jTextField1.setText(Double.toString(ans));
-                    break;
-                
-            }
-        }
-    }
+//    public void result(){
+//        
+//        {
+//            switch(calculation){
+//                
+//                case 1:
+//                    ans = num + Double.parseDouble(jTextField1.getText());
+//                    jTextField1.setText(Double.toString(ans));
+//                    break;
+//                    
+//                case 2:
+//                    ans = num - Double.parseDouble(jTextField1.getText());
+//                    jTextField1.setText(Double.toString(ans));
+//                    break;
+//                    
+//                case 3:
+//                    ans = num * Double.parseDouble(jTextField1.getText());
+//                    jTextField1.setText(Double.toString(ans));
+//                    break;
+//                    
+//                case 4:
+//                    ans = num / Double.parseDouble(jTextField1.getText());
+//                    jTextField1.setText(Double.toString(ans));
+//                    break;
+//                
+//            }
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -516,79 +524,206 @@ public class Calculator extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton400ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        double dot = Double.parseDouble(String.valueOf(jTextField1.getText()));
+        dot = dot * (-1);
+        jTextField1.setText(String.valueOf(dot));
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton200ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton200ActionPerformed
-        num = Double.parseDouble(jTextField1.getText());
-        calculation = 2;
-        jTextField1.setText(jTextField1.getText() + "-");
+        if(jTextField1.getText().isEmpty())
+            return;
+	if(operation != null){
+            switch (operation) {
+            case "-":
+                score -= Float.parseFloat(jTextField1.getText());
+                break;
+		}
+	}else{
+		score = Float.parseFloat(jTextField1.getText());
+		}
+		jTextField1.setText("-");
+                newOperation = true;
+                operation = "-";
     }//GEN-LAST:event_jButton200ActionPerformed
 
     private void jButton600ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton600ActionPerformed
-        num = Double.parseDouble(jTextField1.getText());
-        calculation = 4;
-        jTextField1.setText(jTextField1.getText() + "/");
+        if(jTextField1.getText().isEmpty())
+            return;
+	if(operation != null){
+            switch (operation) {
+            case "/":
+                score /= Float.parseFloat(jTextField1.getText());
+                break;
+		}
+	}else{
+		score = Float.parseFloat(jTextField1.getText());
+		}
+		jTextField1.setText("/");
+                newOperation = true;
+                operation = "/";
     }//GEN-LAST:event_jButton600ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "5");
+        if(newOperation == true){
+            jTextField1.setText(jButton5.getText());
+            newOperation = false;
+	}else{
+            jTextField1.setText(jButton5.getText());
+            }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "6");
+        if(newOperation == true){
+            jTextField1.setText(jButton6.getText());
+            newOperation = false;
+	}else{
+            jTextField1.setText(jButton6.getText());
+            }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "4");
+        if(newOperation == true){
+            jTextField1.setText(jButton4.getText());
+            newOperation = false;
+	}else{
+            jTextField1.getText();
+            jTextField1.setText(jButton4.getText());
+            }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "2");
+        if(newOperation == true){
+            jTextField1.setText(jButton2.getText());
+            newOperation = false;
+	}else{
+            jTextField1.getText();
+            jTextField1.setText(jButton2.getText());
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "3");
+        if(newOperation == true){
+            jTextField1.setText(jButton3.getText());
+            newOperation = false;
+	}else{
+            jTextField1.setText(jButton3.getText());
+            }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "1");
+        if(newOperation == true){
+            jTextField1.setText(jButton1.getText());
+            newOperation = false;
+	}else{
+            jTextField1.setText(jButton1.getText());
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        jTextField1.setText(jTextField1.getText() + ".");
+        if(newOperation == true){
+            jTextField1.setText("0.");
+            newOperation = false;
+	} else {
+            String currentText = jTextField1.getText();
+            if(currentText.indexOf(".") == -1){ // currentText.indexOf(".") != -1 thi bo qua
+                jTextField1.setText(currentText + ".");
+           }
+	}
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton1400ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1400ActionPerformed
-        result();
+        if(jTextField1.getText().isEmpty())
+	return;
+	if(operation != null){
+            switch (operation) {
+                case "+":
+                    score += Float.parseFloat(jTextField1.getText());
+                    break;
+		case "-":
+                    score -= Float.parseFloat(jTextField1.getText());
+                    break;
+                case "*":
+                    score *= Float.parseFloat(jTextField1.getText());
+                    break;
+		case "/":
+                    score /= Float.parseFloat(jTextField1.getText());
+                    break;
+		}
+		}else{
+                    score = Float.parseFloat(jTextField1.getText());
+		}
+	jTextField1.setText(String.valueOf(score));
+	newOperation = true;
+	operation = null;
     }//GEN-LAST:event_jButton1400ActionPerformed
 
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "0");
+        if(newOperation != true){
+            jTextField1.setText(jButton0.getText());
+        }else{
+            jTextField1.setText(jButton0.getText());
+            }
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButton1600ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1600ActionPerformed
-        num = Double.parseDouble(jTextField1.getText());
-        calculation = 1;
-        jTextField1.setText(jTextField1.getText() + "+");
+        if(jTextField1.getText().isEmpty())
+            return;
+	if(operation != null){
+            switch (operation) {
+            case "+":
+                score += Float.parseFloat(jTextField1.getText());
+                break;
+		}
+	}else{
+		score = Float.parseFloat(jTextField1.getText());
+		}
+		jTextField1.setText("+");
+                newOperation = true;
+                operation = "+";
     }//GEN-LAST:event_jButton1600ActionPerformed
 
     private void jButton1700ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1700ActionPerformed
-        num = Double.parseDouble(jTextField1.getText());
-        calculation = 3;
-        jTextField1.setText(jTextField1.getText() + "*");
+        if(jTextField1.getText().isEmpty())
+            return;
+	if(operation != null){
+            switch (operation) {
+            case "*":
+                score *= Float.parseFloat(jTextField1.getText());
+                break;
+		}
+	}else{
+		score = Float.parseFloat(jTextField1.getText());
+		}
+		jTextField1.setText("*");
+                newOperation = true;
+                operation = "*";
     }//GEN-LAST:event_jButton1700ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "8");
+        if(newOperation == true){
+            jTextField1.setText(jButton8.getText());
+            newOperation = false;
+	}else{
+            jTextField1.setText(jButton8.getText());
+            }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "9");
+        if(newOperation == true){
+            jTextField1.setText(jButton9.getText());
+            newOperation = false;
+	}else{
+            jTextField1.setText(jButton9.getText());
+            }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        jTextField1.setText(jTextField1.getText() + "7");
+        if(newOperation == true){
+            jTextField1.setText(jButton7.getText());
+            newOperation = false;
+	}else{
+            jTextField1.setText(jButton7.getText());
+            }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1601ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1601ActionPerformed
